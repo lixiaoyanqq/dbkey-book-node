@@ -1,14 +1,12 @@
 const express = require('express');
+const Result = require('../models/Result');
 
 const router = express.Router();
 
 
 router.post('/login', function(req, res, next) {
     console.log('/user/login', req.body);
-    res.json({
-        code: 0,
-        msg: '登录成功'
-    })
+    new Result().success(res)
 });
 
 router.get('/info', function(req, res, next) {
