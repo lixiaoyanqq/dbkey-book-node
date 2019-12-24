@@ -1,6 +1,6 @@
 const express = require('express');
 const Result = require('../models/Result');
-const { login } = require('../services/user');
+const { login, findUser } = require('../services/user');
 const { md5 } = require('../utils');
 const { PWD_SALT, PRIVATE_KEY, JWT_EXPIRED } = require('../utils/constant');
 const { body, validationResult } = require('express-validator');
@@ -41,8 +41,16 @@ router.post(
     }
 });
 
-router.get('/info', function(req, res, next) {
-    res.json('user info...')
-})
+router.get('/info', function(req, res) {
+    findUser('admin').then(user => {
+        console.log('user',user)
+        if(user){
+            user.roles = [user.role]
+            new Result(user, '用户信息查询成功').success(res)
+        }else {
+            new Result(user, '用户信息查询失败').fail(res)
+        }
+    })
+});
 
 module.exports = router;

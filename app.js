@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 app.use('/', router);
 
 
-const privateKey = fs.readFileSync(path.join(process.cwd(), './https/dbkey.xyz.key'), 'utf8');
-const certificate = fs.readFileSync(path.join(process.cwd(), './https/dbkey.xyz.crt'), 'utf8');
+const privateKey = fs.readFileSync(path.join(process.cwd(), 'https/dbkey.xyz.key'), 'utf8');
+const certificate = fs.readFileSync(path.join(process.cwd(), 'https/dbkey.xyz.crt'), 'utf8');
 const credentials = {
     key: privateKey,
     cre: certificate
