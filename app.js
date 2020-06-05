@@ -9,9 +9,9 @@ const cors = require('cors');
 //创建 express 应用
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
+app.use(cors());//跨域问题
+app.use(bodyParser.urlencoded({ extended: true}));//解析请求body参数
+app.use(bodyParser.json());//解析json形式的body
 app.use('/', router);
 
 
