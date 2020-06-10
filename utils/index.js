@@ -10,7 +10,6 @@ function md5(s){
 
 function decoded(req){
     let token = req.get('Authorization');
-    console.log('解析token获取token',token)
     if (token.indexOf('Bearer') === 0) {
         token = token.replace('Bearer ', '')
     }

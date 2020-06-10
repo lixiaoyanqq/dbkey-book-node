@@ -17,7 +17,6 @@ router.post(
     ],
     function(req, res, next) {
         const err = validationResult(req);
-        console.log('err', err)
         if(!err.isEmpty()){
             const [{ msg }] = err.errors
             next(boom.badRequest(msg))
@@ -43,7 +42,6 @@ router.post(
 
 router.get('/info', function(req, res) {
     const decode = decoded(req)
-    console.log('/router/user/info',decode)
     if (decode && decode.username) {
         findUser('admin').then( user => {
             if(user){
